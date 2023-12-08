@@ -1,41 +1,39 @@
 import React from 'react';
-import img from '../images/fon.jpg';
+import img from '../images/psina.png';
+import "../components/style.css";
+import {Link} from "react-router-dom";
+
 const Header = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary ">
-        <div className="container-fluid">
-          <a className="logo" href="практик.html"><img src={img} className="log" alt="..." /></a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse pin" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary cvet" >
+      <div class="container-fluid">
+        <Link to ={'/'} class="logo"><img src={img} class="log"/></Link>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="poisk.html">Поиск животных</a>
-              </li>
+            <li class="nav-item">
+              <Link to ={'/poisk'} class="nav-link active" style={{"color":"black", "font-size": "large"}} >Поиск животных</Link>
+            </li>
+                        
+            <li class="nav-item">
+              <Link to ={'/dob'} class="nav-link active" style={{"color":"black", "font-size": "large"}} >Добавить объявление</Link>
+            </li>
 
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="new.html">Добавить объявление</a>
-              </li>
+            <li class="nav-item">
+              <Link to ={'/lich'} class="nav-link active"  style={{"color":"black", "font-size": "large"}} >Личный кабинет</Link>
+            </li>
 
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="pc.html">Личный кабинет</a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="prob.html">Вход</a>
-              </li>
-
-            </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+            <li class="nav-item">
+              <Link to ={'/enter'} class="nav-link active" style={{"color":"black", "font-size": "large"}}  >Вход</Link>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
     </div>
   );
 };
