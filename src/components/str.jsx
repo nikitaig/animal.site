@@ -1,5 +1,4 @@
 import React from 'react';
-import img from '../images/коргиг.jpg';
 const Str = (props) => {
     return(
         <div>
@@ -7,7 +6,7 @@ const Str = (props) => {
 <div className="d-flex justify-content-center mt-5">
 <div className="  board border-2 rounded p-3 w-75">
     <div className="otsos">
-<div className="pho"><img src={img} className="w-100" alt="..." /></div>
+<div className="pho"><img src={'https://pets.сделай.site' + props.data.photos} className="w-100" alt="..." /></div>
 
 <div className="con">
     <div className="mt-4">

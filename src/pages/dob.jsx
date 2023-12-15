@@ -3,11 +3,12 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import "../components/style.css";
 import React,{useRef} from 'react';
+
 const Dob = () => {
 
   let blocks = useRef();
 
-  function dobav(e) {
+  function dob(e) {
     e.preventDefault();
 
   var formdata = new FormData(document.getElementById("dob"));
@@ -53,53 +54,54 @@ fetch("https://pets.сделай.site/api/pets", requestOptions)
 
 <div className="mb-3">
   <label htmlFor="exampleInputEmail1" className="form-label">Вид животного</label>
-  <input type="text" className="form-control " id="exampleInputEmail1" />
+  <input type="text" className="form-control " id="inputVid" required  name="kind"/>
 </div>
+
 <div className="mb-3">
   <label htmlFor="exampleInputEmail3" className="form-label">Район</label>
-  <input type="text" className="form-control " id="exampleInputEmail3"/>
+  <input type="text" className="form-control " id="inputDis" required  name="district" />
 </div>
 <div className="mb-3 mt-3">
   <label htmlFor="exampleInputEmail4" className="form-label">Дата</label>
-  <input type="date" className="form-control " id="exampleInputEmail4" />
+  <input type="date" className="form-control " id="inputData" required  name="date" />
 </div>
 <div className="mb-3 mt-3">
   <label htmlFor="exampleInputEmail5" className="form-label">Клеймо</label>
-  <input type="text" className="form-control " id="exampleInputEmail5" />
+  <input type="text" className="form-control " id="inputMark" required  name="mark" />
 </div>
 
     <div className="mb-3">
         <label htmlFor="formFile1" className="form-label">Добавьте фото (обязательно)</label>
-        <input className="form-control" type="file" id="formFile1"/>
+        <input className="form-control" type="file" id="inputPhoto1" required name="photos1"/>
       </div>
       <div className="mb-3">
         <label htmlFor="formFile2" className="form-label">Добавьте фото</label>
-        <input className="form-control" type="file" id="formFile2"/>
+        <input className="form-control" type="file" id="inputPhoto2"  name="photos2"/>
       </div>
       <div className="mb-3">
         <label htmlFor="formFile3" className="form-label">Добавьте фото</label>
-        <input className="form-control" type="file" id="formFile3"/>
+        <input className="form-control" type="file" id="inputPhoto3"  name="photos3"/>
       </div>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail8" className="form-label">Описание</label>
-        <input type="text" className="form-control " id="exampleInputEmail8" />
+        <input type="text" className="form-control " id="inputDescr" required name="description" />
       </div>
 
       <hr className="mt-5 mb-4"/>
       <h4 className="reg" >Данные пользователя</h4>
     <div className="mb-3 mt-3">
       <label htmlFor="exampleInputEmail6" className="form-label">Ваше имя</label>
-      <input type="text" className="form-control" id="exampleInputEmail6" />
+      <input type="text" className="form-control" id="inputname" required name="name"/>
     </div>
   
     <div className="mb-3 gor">
       <div>
         <label htmlFor="exampleInputEmail7" className="form-label">Ваша почта</label>
-        <input type="email" className="form-control " id="exampleInputEmail7" />
+        <input type="email" className="form-control " id="inputEmail" required name="email" />
       </div>
       <div>
         <label htmlFor="exampleInputEmail9" className="form-label">Ваш номер</label>
-        <input type="text" className="form-control " id="exampleInputEmail9"/>
+        <input type="text" className="form-control " id="inputPhone" required name="phone"/>
       </div>
     </div>
 
@@ -115,11 +117,11 @@ fetch("https://pets.сделай.site/api/pets", requestOptions)
             <div className="accordion-body">
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword10" className="form-label">Пароль</label>
-                <input type="password" className="form-control" id="exampleInputPassword10"/>
+                <input type="password" className="form-control" id="exampleInputPassword10"  required name="password"/>
               </div>
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword2" className="form-label">Подтвердите пароль</label>
-                <input type="password" className="form-control" id="exampleInputPassword2"/>
+                <input type="password" className="form-control" id="exampleInputPassword2"  required name="password_confirmation"/>
               </div>  
            </div>
         </div>
@@ -127,14 +129,15 @@ fetch("https://pets.сделай.site/api/pets", requestOptions)
     </div>
         <br/>
   <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" htmlFor="exampleCheck1">Соглашаюсь на обработку моих данных</label>
+    <input type="checkbox" className="form-check-input" id="gridCheck" name="confirm"/>
+    <label className="form-check-label" htmlFor="exampleCheck1" >Соглашаюсь на обработку моих данных</label>
   </div>  
   <div id="emailHelp" className="form-text">Мы никогда никому не передадим ваши личные данные.</div>
   <br/>
-  <button className="btn pur"> <p className="butn">Опубликовать</p></button>
+  <button className="btn pur" type="submit"> <p className="butn">Опубликовать</p></button>
 
 </form>
+  <div className="alert alert-primary w-50 asda mt-3 " style={{"display":"none"}} role="alert" ref={blocks}></div>
 </main>
 
             <Footer/>

@@ -15,12 +15,6 @@ import "../components/style.css";
 
 const Lich = () => {
 
-  let car = {name:"hector", kind:"собака",  district:"Приморский", date:"11.11.23", stat:"onModeration"}
-  let car2 = {name:"greg", kind:"человек",  district:"Т-образный", date:"23.11.23", stat:"active"}
-  let car3 = {name:"crack", kind:"прикол",  district:"красных фонарей", date:"21.10.21", stat:"sedan"}
-  let car4 = {name:"negr", kind:"раб",  district:"Разбитых фонарей", date:"21.09.23", stat:"onModeration"}
-
-
 
   let [user, setUser] = useState({});
   let [day, setDay] = useState(0);
