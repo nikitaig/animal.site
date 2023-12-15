@@ -1,31 +1,31 @@
 import React from 'react';
 import img from '../images/коргиг.jpg';
-const Str = () => {
+const Str = (props) => {
     return(
         <div>
 
-<div class="d-flex justify-content-center mt-5">
-<div class=" border border-warning border-2 rounded p-3 w-75">
-    <div class="otsos">
-<div class="pho"><img src={img} class="w-100" alt="..." /></div>
+<div className="d-flex justify-content-center mt-5">
+<div className="  board border-2 rounded p-3 w-75">
+    <div className="otsos">
+<div className="pho"><img src={img} className="w-100" alt="..." /></div>
 
-<div class="con">
-    <div class="mt-4">
+<div className="con">
+    <div className="mt-4">
 <h4> Информация о животном</h4>
-    <ul class="list-group list-group-flush w-100">
-        <li class="list-group-item">id: 12</li>
-        <li class="list-group-item">Вид животного: собака</li>
-        <li class="list-group-item">Клеймо: 987T5R</li>
-        <li class="list-group-item">Район: Приморский</li>
-        <li class="list-group-item">Дата: 01.12.23</li>
+    <ul className="list-group list-group-flush w-100">
+        <li className="list-group-item">id: {props.data.id}</li>
+        <li className="list-group-item">Вид животного: {props.data.kind}</li>
+        <li className="list-group-item">Клеймо: {props.data.kleimo}</li>
+        <li className="list-group-item">Район: {props.data.district}</li>
+        <li className="list-group-item">Дата: {props.data.date}</li>
     </ul>
 </div>
-    <div class=" mt-5"> 
+    <div className=" mt-5"> 
     <h4> Информация о Нашедшем</h4>
-    <ul class="list-group list-group-flush w-100">
-    <li class="list-group-item">Имя: Дмитрий </li>
-    <li class="list-group-item">Номер телефона: 89438497546</li>
-    <li class="list-group-item">Email: nvsngfqwn3f23n@gmail.com</li>
+    <ul className="list-group list-group-flush w-100">
+    <li className="list-group-item">Имя: {props.data.name} </li>
+    <li className="list-group-item">Номер телефона: {props.data.number}</li>
+    <li className="list-group-item">Email: {props.data.email}</li>
 </ul>
 </div>
 </div>

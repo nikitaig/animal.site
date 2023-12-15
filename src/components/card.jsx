@@ -1,23 +1,29 @@
 import React from 'react';
-import img from '../images/коргиг.jpg';
+import { Link } from "react-router-dom";
 const Card = (props) => {
-    return(
-        <div>
-<div className="col">
-          <div className="card h-100">
-            <img src={img} className="card-img-top" alt="..."/>
-            <div className="card-body ft">
-                <div>
+  return (
+    
+      <div className="col ">
+        <div className="card h-100">
+          <img src={'https://pets.сделай.site' + props.data.photos} className="card-img-top hoto" alt="..." />
+          <div className="card-body ft">
+            <div >
               <h5 className="card-title">{props.data.name}</h5>
-              <h7 className="card-text">Вид: {props.data.kind}</h7><br/>
-              <h7 className="card-text">Район: {props.data.district}</h7><br/>
-              <h7 className="card-text">Дата: {props.data.date}</h7></div>
-              <div><button className="btn pur mt-3"> <p className="butn">Перейти</p></button></div>
+              <p className="card-text">Вид: {props.data.kind}.</p>
+              <p className="card-text">Район:{props.data.district}</p>
+              <p className="card-text">Дата:{props.data.date}</p>
             </div>
+            <div className='mt-3'>
+              <Link to={'/strone'}><button className="btn pur"><p className="butn">Перейти</p></button></Link></div>
           </div>
         </div>
-        </div>
-    );
+      </div>
+
+
+
+
+   
+  );
 };
 
 export default Card;

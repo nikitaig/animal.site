@@ -2,93 +2,285 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import LichCard from "../components/lichcard";
 import img from '../images/макарр.png';
+import img1 from '../images/VK.png';
+import img2 from '../images/аська.png';
+import img3 from '../images/moodle.jfif';
+import izm from '../images/измена.png';
+import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 import "../components/style.css";
-function Lich() {
+
+const Lich = () => {
+
+  let car = {name:"hector", kind:"собака",  district:"Приморский", date:"11.11.23", stat:"onModeration"}
+  let car2 = {name:"greg", kind:"человек",  district:"Т-образный", date:"23.11.23", stat:"active"}
+  let car3 = {name:"crack", kind:"прикол",  district:"красных фонарей", date:"21.10.21", stat:"sedan"}
+  let car4 = {name:"negr", kind:"раб",  district:"Разбитых фонарей", date:"21.09.23", stat:"onModeration"}
+
+
+
+  let [user, setUser] = useState({});
+  let [day, setDay] = useState(0);
+  let history = useNavigate();
+  let [cards, setCards] = useState([]);
+
+  const load = () => {
+
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer " + localStorage.token);
+
+      var requestOptions = {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
+      };
+
+      fetch("https://pets.сделай.site/api/users", requestOptions)
+          .then(response => response.json())
+          .then(result => {
+              if ('name' in result) {
+                  setUser(result);
+
+                  let a = new Date();
+                  a.getDate();
+                  let b = new Date(user.registrationDate);
+                  let c = Math.floor((a - b) / 1000 / 3600 / 24)
+                  setDay(c);
+              }
+              else {
+                  history('/Enter');
+              }
+          }
+          )
+          .catch(error => console.log('error', error));
+
+  }
+  useEffect(load, []);
+
+  const loadCards = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + localStorage.token);
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch("https://pets.сделай.site/api/users/orders", requestOptions)
+        .then(response => response.json())
+        .then(result => {console.log(result);
+            if (result.data.orders.length > 0)
+            {
+                
+                setCards(result.data.orders)
+            }
+        })
+        .catch(error => console.log('error', error));
+}
+useEffect(loadCards, []);
+
+
+  let block = useRef();
+  let blocks = useRef();
+
+  function sendPhone(e) {
+      e.preventDefault();
+
+      const forms = document.getElementById('phone')
+
+      if (!forms.checkValidity()) {
+          e.stopPropagation()
+          forms.classList.add('was-validated')
+          return
+      }
+
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Bearer " + localStorage.token);
+
+      var raw = JSON.stringify(user);
+
+      var requestOptions = {
+          method: 'PATCH',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+      };
+
+      fetch("https://pets.сделай.site/api/users/phone", requestOptions)
+          .then(response => response.status)
+          .then(result => {
+              if (result == 200) {
+                  let message = 'Номер успешно изменен';
+                  blocks.current.innerText = message;
+                  blocks.current.style.background = "#D6D6FF"
+                  blocks.current.style.color = "black";
+                  blocks.current.style.border = "1px solid rgb(119, 119, 255)"
+                  blocks.current.style.display = 'flex';
+              }
+          })
+          .catch(error => console.log('error', error));
+  }
+
+  function sendEmail(e) {
+      e.preventDefault();
+
+      const forms = document.getElementById('email')
+
+      if (!forms.checkValidity()) {
+          e.stopPropagation()
+          forms.classList.add('was-validated')
+          return
+      }
+
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Bearer " + localStorage.token);
+      var raw = JSON.stringify(user);
+
+      var requestOptions = {
+          method: 'PATCH',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+      };
+
+      fetch("https://pets.сделай.site/api/users/email", requestOptions)
+          .then(response => response.status)
+          .then(result => {
+              if (result == 200) {
+                  let message = 'Почта успешно изменена';
+                  block.current.innerText = message;
+                  block.current.style.background = "#D6D6FF"
+                  block.current.style.color = "black";
+                  block.current.style.border = "1px solid rgb(119, 119, 255)"
+                  block.current.style.display = 'flex';
+              }
+          })
+          .catch(error => console.log('error', error));
+  }
+
+  function exit() {
+      localStorage.clear();
+      history('/Enter');
+  }
+
+
+
+
+
     return (
         <div>
             <Header />
-            <main style={{"background-color": "#f4f5f7"}}>
-        <div class="ots">
-            <p class="p" >Личный кабинет</p>
+            <main style={{"backgroundColor": "#f4f5f7"}}>
+        <div className="ots">
+            <p className="p" >Личный кабинет</p>
           </div>
-        <section class="vh-70">
-            <div class="container py-5 h-100">
-              <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-6 mb-4 mb-lg-0">
-                  <div class="card mb-3" style={{"border-radius": ".5rem"}}>
-                    <div class="row g-0">
-                      <div class="col-md-4 gradient-custom text-center text-white"
-                        style={{"border-top-left-radius": ".5rem", "border-bottom-left-radius": ".5rem"}}>
+        <section className="vh-70">
+            <div className="container py-5 h-100">
+              <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="col col-lg-6 mb-4 mb-lg-0">
+                  <div className="card mb-3" style={{"borderRadius": ".5rem"}}>
+                    <div className="row g-0">
+                      <div className="col-md-4 gradient-custom text-center text-white"
+                        style={{"borderTopLeftRadius": ".5rem", "borderBottomLeftRadius": ".5rem"}}>
                         <img src={img}
-                          alt="Avatar" class="img-fluid my-5" style={{"width": "80px"}}/>
-                        <h5>Илья Макаров</h5>
-                        <p>Русич, богатырь</p>
+                          alt="Avatar" className="img-fluid my-5" style={{"width": "80px"}}/>
+                        <h5>{user.name}</h5>
                       </div>
-                      <div class="col-md-8">
-                        <div class="card-body p-4">
-                            <div class="izmen">
+                      <div className="col-md-8">
+                        <div className="card-body p-4">
+                            <div className="izmen">
                           <h4>Личные данные</h4>
-<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Изменить
-  </button>
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Личные данные</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body">
+                          <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exit">Выйти из аккаунта</button>
 
-            <form class=" board border-2 rounded p-3 ">
-                <h1 class="reg" >Редактирование</h1>
+
+
+
+  <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h1 className="modal-title fs-5" id="exampleModalLabel">Личные данные</h1>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div className="modal-body">
+
+            <form className=" needs-validation  board border-2 rounded p-3 "  noValidate id='email' onSubmit={sendEmail}>
+                <h1 className="reg" >Редактирование</h1>
                 <br/>
             
-                
                   <div>
-                    <label for="exampleInputEmail1" class="form-label">Ваш город</label>
-                    <input type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                  </div> <br/>
-                  <div>
-                    <label for="exampleInputEmail1" class="form-label">Ваш адрес</label>
-                    <input type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <label htmlFor="exampleInputEmail1" className="form-label">Ваша почта</label>
+                    <input type="email" className="form-control" required onChange={(e) => setUser({ ...user, email: e.target.value })} />
                   </div>
-                  <br/>
-                  <div>
-                    <label for="exampleInputEmail1" class="form-label">Ваша почта</label>
-                    <input type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                  </div> <br/>
-                  <div>
-                    <label for="exampleInputEmail1" class="form-label">Ваш номер</label>
-                    <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                  </div>
+                  <div className="invalid-feedback">
+                                        Укажите корректный email
+                                    </div>
               <br/>
-              <button  class="btn pur"><p class="butn">Сохранить изменения</p></button>
+              <button  className="btn pur" type="submit"><p className="butn">Сохранить изменения</p></button>
             </form>
-
+            <div className="alert alert-primary none" style={{ "display": "none" }} role="alert" ref={block}></div>
         </div>
-        <div class="modal-footer otsos">
-          <div><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exit">Выйти из аккаунта</button></div>
-         <div> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
+        <div className="modal-footer otsos">
+         <div> <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="exit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Выход из аккаунта</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+
+  <div className="modal fade" id="stat" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h1 className="modal-title fs-5" id="exampleModalLabel">Личные данные</h1>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
         </div>
-        <div class="modal-body">
+        <div className="modal-body">
+
+            <form className="needs-validation  board border-2 rounded p-3 " noValidate id='phone' onSubmit={sendPhone}>
+                <h3 className="reg" >Редактирование</h3>
+                <br/>
+            
+                  <div>
+                    <label htmlFor="exampleInputEmail1" className="form-label">Ваш номер</label>
+                    <input type="text" pattern='^[\d\+]{12}$' className="form-control" required onChange={(e) => setUser({ ...user, phone: e.target.value })} />
+                    </div>
+                  <div className="invalid-feedback">
+                                        Введите номер телефона, используйте + и цифры
+                                    </div>
+              <br/>
+              <button  className="btn pur" type="submit"><p className="butn">Сохранить изменения</p></button>
+            </form>
+
+            <div className="alert alert-primary none" style={{ "display": "none" }} role="alert" ref={blocks}></div>
+        </div>
+        <div className="modal-footer otsos">
+         <div> <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div className="modal fade" id="exit" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h1 className="modal-title fs-5" id="exampleModalLabel">Выход из аккаунта</h1>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div className="modal-body">
         Вы уверены, что хотите выйти? 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-          <button type="button" class="btn btn-danger" >Выйти</button>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="button" className="btn btn-danger" onClick={exit} data-bs-dismiss="modal" >Выйти</button>
         </div>
       </div>
     </div>
@@ -100,46 +292,43 @@ function Lich() {
 
                           </div>
                           <br/>
-                          <hr class="mt-0 mb-4"/>
+                          <hr className="mt-0 mb-4"/>
                            
-                            <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                              <h6>Email</h6>
-                              <p class="text-muted">info@example.com</p>
+                            <div className="row pt-1">
+                            <div className="col-6 mb-3">
+                              <div className="fiz">
+                            <h6 className="ml">Email</h6>
+                            <img src={izm} className="iz" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  />
+                            </div>
+
+                              <p className="text-muted">{user.email}</p>
                             </div> 
-                            <div class="col-6 mb-3">
-                              <h6>Phone</h6>
-                              <p class="text-muted">123 456 789</p>
+                         
+                            <div className="col-6 mb-3">
+                            <div className="fiz">
+                            <h6 className="ml">Phone</h6>
+                            <img src={izm} className="iz" data-bs-toggle="modal" data-bs-target="#stat"/>
+                            </div>
+                              <p className="text-muted">{user.phone}</p>
                             </div>  
                             </div>           
-                            <div class="row pt-1">
-                              <div class="col-6 mb-3">
+                            <div className="row pt-1">
+                              <div className="col-6 mb-3">
                                 <h6>Дата регистрации</h6>
-                                <p class="text-muted">12.09.2003</p>
+                                {/* <p className="text-muted">{lich.data}</p> */}
+                                <p className="text-muted">{user.registrationDate}</p>
+
                               </div> 
-                              <div class="col-6 mb-3">
+                              <div className="col-6 mb-3">
                                 <h6>Колво дней</h6>
-                                <p class="text-muted">1569</p>
+                                <p className="text-muted">{day}</p>
                               </div>  
                               </div> 
 
-                          <h5>Местонахождение</h5>
-                          <hr class="mt-0 mb-4"/>
-                          <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                              <h6>Город</h6>
-                              <p class="text-muted">СПб</p>
-                            </div>
-                            <div class="col-6 mb-3">
-                              <h6>Адрес</h6>
-                              <p class="text-muted">ПКГХ</p>
-                            </div>
-                          </div>
-
-                          <div class="otsos">
-                            <a href="#!"><img src="VK.png" class="vk"/></a>
-                            <a href="#!"><img src="moodle.jfif" class="mood "/></a>
-                            <a href="#!"><img src="аська.png" class="vk"/></a>
+                          <div className="otsos">
+                            <a href="#!"><img src={img1} className="vk" alt="..."/></a>
+                            <a href="#!"><img src={img3} className="mood" alt="..."/></a>
+                            <a href="#!"><img src={img2} className="vk" alt="..."/></a>
 
                           </div>
                         </div>
@@ -152,29 +341,39 @@ function Lich() {
           </section>
 
 
-          <div class="ots">
-            <p class="p" >Найденные животные</p>
+          <div className="ots">
+            <p className="p" >Найденные животные</p>
           </div>
 
-          <div class="row row-cols-1 row-cols-md-3 g-4 w-75 m-auto">
-          <LichCard />
-          <LichCard />
-          <LichCard />
-          <LichCard />
+
+
+          <div className="row row-cols-1 row-cols-md-3 g-4 w-75 m-auto">
+            {cards.map((item, index) => <LichCard data={item} key={index} />)}
             </div>
 
-            <hr class="mt-0 mb-4 mt-5"/>
-          <div class="fr">       
-          <div class=" d-flex justify-content-center">
-            <div class="mb-3">
+
+
+
+
+
+
+
+
+
+            <hr className="mt-0 mb-4 mt-5"/>
+          <div className="fr">       
+          <div className=" d-flex justify-content-center">
+            <div className="mb-3">
             <h6>Колво обьявлений</h6>
-            <p class="text-muted">19</p>
+            {/* <p className="text-muted">{lich.kolvoob}</p> */}
+            <p className="text-muted">{user.orderCount}</p> 
           </div>  
         </div>      
-          <div class=" d-flex justify-content-center">
-            <div class="mb-3">
+          <div className=" d-flex justify-content-center">
+            <div className="mb-3">
             <h6>Колво найденных хозяев</h6>
-            <p class="text-muted">12</p>
+            {/* <p className="text-muted">{lich.kolvohoz}</p> */}
+            <p className="text-muted">{user.petsCount}</p> 
           </div>
         </div>
         </div> 
