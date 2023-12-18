@@ -1,9 +1,58 @@
-import React from 'react';
+
+import React,{useEffect, useState, useRef} from 'react';
 import img from '../images/psina.png';
 import "../components/style.css";
 import {Link} from "react-router-dom";
+import Card from "../components/card";
 
 const Header = () => {
+
+
+  let [card, setCard]=useState([]);
+ 
+
+ /* let  cards=.description.map((order, index)=>{
+    return< card.data.orders.description data={order}/>;        
+      })*/
+
+let [query, setQuery]=useState('');
+
+const send=()=>{
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  
+  fetch("https://pets.сделай.site/api/search?query="+query, requestOptions)
+    .then(response => response.json())
+    .then(result => {console.log(result)
+      
+      
+      let data=result.data.orders.map((item)=>item.description)
+      let set=new Set(data)
+      let uniq=Array.from(set)
+     
+      data=uniq.map((value, index)=><option value={value} key={value}></option>)
+      
+      
+      setCard(data)
+        console.log(card)
+      })
+      
+      
+    
+    .catch(error => console.log('error', error));
+}
+
+const search = (e) => {
+setQuery(e.target.value)
+
+if (query.length>2) setTimeout(send, 1000);
+}
+
+
+
+
   return (
     <div>
     <nav className="navbar navbar-expand-lg bg-body-tertiary cvet" >
@@ -31,6 +80,15 @@ const Header = () => {
               <Link to ={'/enter'} className="nav-link active" style={{"color":"black", "fontSize": "large"}}  >Вход</Link>
             </li>
           </ul>
+          <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" onChange={search} list="pets"/>
+        <button class="btn btn-outline-success" type="submit">Поиск</button>
+      </form>
+
+ <datalist id="pets">
+  {card}
+ </datalist>
+
         </div>
       </div>
     </nav>

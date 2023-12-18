@@ -84,7 +84,7 @@ const LichCard = (props) => {
               <p className="card-text">Дата: {props.data.date}</p>
               </div>
                 </div>
-                <div className="izmen mt-3">  <Link to={'/strone'}><button className="btn pur "><p className="butn">Перейти</p></button></Link>
+                <div className="izmen mt-3">  <Link to={'/strone' + props.data.id}><button className="btn pur "><p className="butn">Перейти</p></button></Link>
   <button className="btn pur" data-bs-toggle="modal" data-bs-target={'#izme'+props.data.id}> <p className="butn">Редактировать</p></button>
                 </div>
                 </div>
@@ -133,7 +133,7 @@ const LichCard = (props) => {
         
                 </div>
                 <div className="modal-footer otsos">
-                  <div><button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#del"+props.data.id}>Удалить объявление: {props.data.id}</button></div>
+                  <div><button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#del"+props.data.id}>Удалить объявление</button></div>
                  <div> <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
                 </div>
               </div>
@@ -152,7 +152,7 @@ const LichCard = (props) => {
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div className="modal-body">
-                Вы уверены, что хотите удалить объявление {props.data.id}? 
+                Вы уверены, что хотите удалить объявление ? 
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
