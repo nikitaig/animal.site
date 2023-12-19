@@ -1,23 +1,24 @@
-
 import React,{useEffect, useState, useRef} from 'react';
 import img from '../images/psina.png';
 import "../components/style.css";
 import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Card from "../components/card";
+
 
 const Header = () => {
 
 
   let [card, setCard]=useState([]);
  
-
- /* let  cards=.description.map((order, index)=>{
-    return< card.data.orders.description data={order}/>;        
-      })*/
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
 let [query, setQuery]=useState('');
 
 const send=()=>{
+
+
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -44,6 +45,9 @@ const send=()=>{
     .catch(error => console.log('error', error));
 }
 
+
+
+
 const search = (e) => {
 setQuery(e.target.value)
 
@@ -51,6 +55,15 @@ if (query.length>2) setTimeout(send, 1000);
 }
 
 
+
+
+function skail(e) {
+  e.preventDefault();
+  console.log(searchTerm);
+  navigate("/fsearch", { state: { query: searchTerm } });
+
+
+}
 
 
   return (
@@ -80,8 +93,8 @@ if (query.length>2) setTimeout(send, 1000);
               <Link to ={'/enter'} className="nav-link active" style={{"color":"black", "fontSize": "large"}}  >Вход</Link>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" onChange={search} list="pets"/>
+          <form class="d-flex" role="search" onSubmit={skail} id="fsearch">
+        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" onChange={search} required  list="pets"/>
         <button class="btn btn-outline-success" type="submit">Поиск</button>
       </form>
 

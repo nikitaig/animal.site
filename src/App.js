@@ -6,6 +6,7 @@ import Poisk from "./pages/poisk.jsx";
 import Lich from "./pages/lich.jsx";
 import Strone from "./pages/strone.jsx";
 import Dob from "./pages/dob.jsx";
+import Fsearch from "./pages/fsearch.jsx";
 function App() {
   return (<div>
     <Routes>
@@ -16,6 +17,7 @@ function App() {
         <Route path={'/lich'} element={<Lich/>}/>
         <Route path={'/strone'} element={<Strone/>}/>
         <Route path={'/dob'} element={<Dob/>}/>
+        <Route path={'/fsearch'} element={<Fsearch/>}/>
     </Routes>
 </div>
 );

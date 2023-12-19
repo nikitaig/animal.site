@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 const Card = (props) => {
+  const navigate = useNavigate();
   return (
     
       <div className="col ">
@@ -14,9 +16,10 @@ const Card = (props) => {
               <p className="card-text">Дата:{props.data.date}</p>
             </div>
             <div className='mt-3'>
-              <Link to={'/strone'}><button className="btn pur"><p className="butn">Перейти</p></button></Link></div>
+            <div > <button onClick={() => {navigate("/strone", { state: props.data.id })}} className="btn pur"><p className="butn">Перейти</p></button></div>
           </div>
         </div>
+      </div>
       </div>
 
 

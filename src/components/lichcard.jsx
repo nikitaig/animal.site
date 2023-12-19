@@ -1,6 +1,8 @@
 import React from 'react';
 import img from '../images/коргиг.jpg';
 import {Link} from "react-router-dom";
+
+import { useNavigate } from 'react-router-dom';
 const LichCard = (props) => {
 
 
@@ -65,6 +67,7 @@ const LichCard = (props) => {
 
 
 
+  const navigate = useNavigate();
 
     return(
         <div>
@@ -84,7 +87,7 @@ const LichCard = (props) => {
               <p className="card-text">Дата: {props.data.date}</p>
               </div>
                 </div>
-                <div className="izmen mt-3">  <Link to={'/strone' + props.data.id}><button className="btn pur "><p className="butn">Перейти</p></button></Link>
+                <div className="izmen mt-3"> <div> <button onClick={() => {navigate("/strone", { state: props.data.id })}} className="btn pur"><p className="butn">Перейти</p></button></div>
   <button className="btn pur" data-bs-toggle="modal" data-bs-target={'#izme'+props.data.id}> <p className="butn">Редактировать</p></button>
                 </div>
                 </div>

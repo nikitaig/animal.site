@@ -63,7 +63,7 @@ const Poisk = () => {
     return (
         <div>
             <Header />
-            <main style={{ "minHeight": "72vh" }}>
+            <main style={{ "minHeight": "73vh" }}>
              <div className="ots">
   <p className="p" >Потерянные животные</p>
 </div>
