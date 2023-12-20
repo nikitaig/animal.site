@@ -69,7 +69,7 @@ const Fsearch = () => {
             <Header />
             <main style={{ "minHeight": "73vh" }}>
              <div className="ots">
-  <p className="p" >Потерянные животные</p>
+  <p className="p" >Быстрый поиск</p>
 </div>
 
 <hr className="mt-3 mb-4"/>

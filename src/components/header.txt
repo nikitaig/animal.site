@@ -2,12 +2,18 @@ import React,{useEffect, useState, useRef} from 'react';
 import img from '../images/psina.png';
 import "../components/style.css";
 import {Link} from "react-router-dom";
-import QuickSearch from "../components/QuickSearch";
+import { useNavigate } from "react-router-dom";
+import Card from "../components/card";
+
 
 const Header = () => {
 
 
   let [card, setCard]=useState([]);
+ 
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
 let [query, setQuery]=useState('');
 
 const send=()=>{
@@ -51,13 +57,13 @@ if (query.length>2) setTimeout(send, 1000);
 
 
 
-// function skail(e) {
-//   e.preventDefault();
-//   console.log(searchTerm);
-//   navigate("/fsearch", { state: { query: searchTerm } });
+function skail(e) {
+  e.preventDefault();
+  console.log(searchTerm);
+  navigate("/fsearch", { state: { query: searchTerm } });
 
 
-// }
+}
 
 
   return (
@@ -87,16 +93,14 @@ if (query.length>2) setTimeout(send, 1000);
               <Link to ={'/enter'} className="nav-link active" style={{"color":"black", "fontSize": "large"}}  >Вход</Link>
             </li>
           </ul>
-          
-          <QuickSearch/>
-          {/* <form class="d-flex" role="search" onSubmit={skail} id="fsearch">
+          <form class="d-flex" role="search" onSubmit={skail} id="fsearch">
         <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" onChange={search} required  list="pets"/>
         <button class="btn btn-outline-success" type="submit">Поиск</button>
       </form>
 
  <datalist id="pets">
   {card}
- </datalist> */}
+ </datalist>
 
         </div>
       </div>
