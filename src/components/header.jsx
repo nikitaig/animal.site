@@ -10,54 +10,7 @@ const Header = () => {
   let [card, setCard]=useState([]);
 let [query, setQuery]=useState('');
 
-const send=()=>{
 
-
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-  
-  fetch("https://pets.сделай.site/api/search?query="+query, requestOptions)
-    .then(response => response.json())
-    .then(result => {console.log(result)
-      
-      
-      let data=result.data.orders.map((item)=>item.description)
-      let set=new Set(data)
-      let uniq=Array.from(set)
-     
-      data=uniq.map((value, index)=><option value={value} key={value}></option>)
-      
-      
-      setCard(data)
-        console.log(card)
-      })
-      
-      
-    
-    .catch(error => console.log('error', error));
-}
-
-
-
-
-const search = (e) => {
-setQuery(e.target.value)
-
-if (query.length>2) setTimeout(send, 1000);
-}
-
-
-
-
-// function skail(e) {
-//   e.preventDefault();
-//   console.log(searchTerm);
-//   navigate("/fsearch", { state: { query: searchTerm } });
-
-
-// }
 
 
   return (
@@ -89,14 +42,7 @@ if (query.length>2) setTimeout(send, 1000);
           </ul>
           
           <QuickSearch/>
-          {/* <form class="d-flex" role="search" onSubmit={skail} id="fsearch">
-        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" onChange={search} required  list="pets"/>
-        <button class="btn btn-outline-success" type="submit">Поиск</button>
-      </form>
 
- <datalist id="pets">
-  {card}
- </datalist> */}
 
         </div>
       </div>
