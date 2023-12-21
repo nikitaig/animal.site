@@ -220,7 +220,7 @@ useEffect(loadCards, []);
             </form>
             <div className="alert alert-primary none" style={{ "display": "none" }} role="alert" ref={block}></div>
         </div>
-        <div className="modal-footer otsos">
+        <div className="modal-footer otstup">
          <div> <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
         </div>
       </div>
@@ -254,7 +254,7 @@ useEffect(loadCards, []);
 
             <div className="alert alert-primary none" style={{ "display": "none" }} role="alert" ref={blocks}></div>
         </div>
-        <div className="modal-footer otsos">
+        <div className="modal-footer otstup">
          <div> <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
         </div>
       </div>
@@ -319,7 +319,7 @@ useEffect(loadCards, []);
                               </div>  
                               </div> 
 
-                          <div className="otsos">
+                          <div className="otstup">
                             <a href="#!"><img src={img1} className="vk" alt="..."/></a>
                             <a href="#!"><img src={img3} className="mood" alt="..."/></a>
                             <a href="#!"><img src={img2} className="vk" alt="..."/></a>
