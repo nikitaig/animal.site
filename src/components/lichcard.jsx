@@ -70,17 +70,14 @@ const LichCard = (props) => {
   const navigate = useNavigate();
 
     return(
-        <div>
+
 
 <div className="col">
               <div className="card h-100">
                 <img src={'https://pets.сделай.site' + props.data.photos} className="card-img-top" alt="..."/>
                 <div className="card-body ft">
                   <div>
-                  <div className="izmen">
-                  <h5 className="card-title">{props.data.name}</h5>
-                  <h5 className="yetxt">{props.data.stat}</h5>
-                </div>
+
                 <div className="pik">
                 <p className="card-text">Вид: {props.data.kind}</p>
               <p className="card-text">Район: {props.data.district}</p>
@@ -89,13 +86,8 @@ const LichCard = (props) => {
                 </div>
                 <div className="izmen mt-3"> <div> <button onClick={() => {navigate("/strone", { state: props.data.id })}} className="btn pur"><p className="butn">Перейти</p></button></div>
   <button className="btn pur" data-bs-toggle="modal" data-bs-target={'#izme'+props.data.id}> <p className="butn">Редактировать</p></button>
-                </div>
-                </div>
-              </div>
-            </div>
 
-
-            <div className="modal fade" id={"izme"+props.data.id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal fade" id={"izme"+props.data.id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
                 <div className="modal-header">
@@ -115,19 +107,19 @@ const LichCard = (props) => {
                 </div>
                     <div className="mb-3">
                         <label htmlFor="formFile" className="form-label">Добавьте фото (обязательно)</label>
-                        <input className="form-control" type="file" id="formFile" name='photos1'/>
+                        <input className="form-control" type="file" id="formFile" name='photos1' accept="image/png"/>
                       </div>
                       <div className="mb-3">
                         <label htmlFor="formFile" className="form-label">Добавьте фото</label>
-                        <input className="form-control" type="file" id="formFile" name='photos2'/>
+                        <input className="form-control" type="file" id="formFile" name='photos2' accept="image/png"/>
                       </div>
                       <div className="mb-3">
                         <label htmlFor="formFile" className="form-label">Добавьте фото</label>
-                        <input className="form-control" type="file" id="formFile" name='photos3'/>
+                        <input className="form-control" type="file" id="formFile" name='photos3' accept="image/png"/>
                       </div>
                       <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Описание</label>
-                        <input type="text" className="form-control " id="exampleInputEmail1" name='description'/>
+                        <input type="text" className="form-control " id="exampleInputEmail1" pattern='^[А-Яа-яёЁ\s\-]+$' name='description'/>
                       </div>
                         <br/>
                         <button className="btn pur" type="submit" ><p className="butn">Сохранить</p></button>
@@ -142,9 +134,6 @@ const LichCard = (props) => {
               </div>
             </div>
           </div>
-
-
-
 
 
           <div className="modal fade" id={"del"+props.data.id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -166,8 +155,14 @@ const LichCard = (props) => {
           </div>
 
 
+                </div>
+                </div>
+              </div>
+            </div>
 
-        </div>
+
+            
+
     );
 };
 

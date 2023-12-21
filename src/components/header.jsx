@@ -72,7 +72,7 @@ if (query.length>2) setTimeout(send, 1000);
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item">
-              <Link to ={'/poisk'} className="nav-link active" style={{"color":"black", "fontSize": "large"}} >Поиск животных</Link>
+              <Link to ={'/poisk/false'} className="nav-link active" style={{"color":"black", "fontSize": "large"}} >Поиск животных</Link>
             </li>
                         
             <li className="nav-item">

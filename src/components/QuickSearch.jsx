@@ -9,12 +9,16 @@ const QuickSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [card, setCard] = useState({ data: { orders: [] } })
     const navigate = useNavigate();
+    
 
 
     const submitSearch = (e) => {
-        e.preventDefault()
-        console.log(searchTerm);
-        navigate("/poisk", { state: { query: searchTerm } });
+        e.preventDefault();
+        
+        navigate("/poisk/"+searchTerm);
+        window.location.reload()
+      
+
     };
 
     const onChange = (e) => {

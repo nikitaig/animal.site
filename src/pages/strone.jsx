@@ -44,7 +44,7 @@ const Strone = (props) => {
             <div className="d-flex justify-content-center mt-5">
 <div className="  board border-2 rounded p-3 w-75">
     <div className="otsos">
-<div className="pho"><img src={'https://pets.сделай.site' + card.photos1} className="w-100" alt="..." /></div>
+<div className="pho" style={{'max-width': "500px", 'max-height': "500px"}} ><img src={'https://pets.сделай.site' + card.photos1} className="w-100" style={{ 'max-height': "500px"}}alt="..." /></div>
 
 <div className="con">
     <div className="mt-4">
@@ -61,11 +61,11 @@ const Strone = (props) => {
 </div>
     <div className=" mt-5"> 
     <h4> Информация о Нашедшем</h4>
-    {/* <ul className="list-group list-group-flush w-100">
-    <li className="list-group-item">Имя: {user.name} </li>
-    <li className="list-group-item">Номер телефона: {user.phone}</li>
-    <li className="list-group-item">Email: {user.email}</li>
-</ul> */}
+    <ul className="list-group list-group-flush w-100">
+    <li className="list-group-item">Имя: {card.name} </li>
+    <li className="list-group-item">Номер телефона: {card.phone}</li>
+    <li className="list-group-item">Email: {card.email}</li>
+</ul>
 </div>
 </div>
 </div>

@@ -1,4 +1,5 @@
 
+
 const QuickSearchRequest = (query, card, setCard) => {
     console.log(`https://pets.сделай.site/api/search?query=${query}`);
     fetch(`https://pets.сделай.site/api/search?query=${query}`).then(response => response.json())

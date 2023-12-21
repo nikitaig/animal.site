@@ -44,6 +44,17 @@ const  Registr= () => {
           blocks.current.style.color = "black";
           blocks.current.style.border = "1px solid rgb(19, 136, 8)"
           blocks.current.style.display = 'flex';
+          blocks.current.style.justifyContent= 'center';
+        }
+        else
+        {
+            let message = 'Вы ввели неправильные данные!!!';
+  blocks.current.innerText = message;
+  blocks.current.style.background = '#C76864';
+  blocks.current.style.color = "black";
+  blocks.current.style.border = "1px solid #801818"
+  blocks.current.style.display = 'flex';
+  blocks.current.style.justifyContent= 'center';
         }
       })
 
@@ -58,8 +69,10 @@ const  Registr= () => {
         <div>
             <Header />
             <main className="main d-flex justify-content-center align-items-center m-auto ">
+<div>
 
-<form className=" board border-2 rounded p-3" noValidate onSubmit={reg} id='registration'>
+<div className=" board border-2 rounded p-3">
+<form  noValidate onSubmit={reg} id='registration'>
     <h1 className="reg" >Регистрация</h1>
     <br/>
 
@@ -113,9 +126,9 @@ const  Registr= () => {
   <button className="btn pur"><p className="butn">Зарегистрироваться</p></button>
  
 </form>
-
-<div className="alert alert-primary w-50 asda mt-3" style={{ "display": "none" }} role="alert" ref={blocks}></div>
-
+</div>
+<div className="alert alert-primary w-75 asda mt-3 m-auto text-center" style={{ "display": "none" }} role="alert" ref={blocks}></div>
+</div>
 </main>
 
 <div className="foot">

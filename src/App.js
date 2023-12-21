@@ -13,7 +13,7 @@ function App() {
         <Route path={'/'} element={<Main/>}/>
         <Route path={'/registr'} element={<Registr/>}/>
         <Route path={'/enter'} element={<Enter/>}/>
-        <Route path={'/poisk'} element={<Poisk/>}/>
+        <Route path={'/poisk/:query'} element={<Poisk/>}/>
         <Route path={'/lich'} element={<Lich/>}/>
         <Route path={'/strone'} element={<Strone/>}/>
         <Route path={'/dob'} element={<Dob/>}/>
