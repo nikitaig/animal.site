@@ -2,12 +2,10 @@
 import Card from "../components/card";
 import "../components/style.css";
 import React,{useEffect, useState, useRef} from 'react';
-import { QuickSearchRequest } from "../components/requests";
 
 const Searchhh = () => {
 
     let [zap, setZap] = useState({});
-    let [cards, setCards] = useState([]);
     let blocks = useRef();
     let [pag, setPag] = useState([])
     let [but, setBut] = useState([])
@@ -53,7 +51,7 @@ const Searchhh = () => {
                     blocks.current.style.color = "black";
                     blocks.current.style.border = "1px solid #801818"
                     blocks.current.style.display = 'flex';
-                    setBut()
+                    
                 }
             })
             .catch(error => console.log('error', error));
@@ -105,10 +103,7 @@ const Searchhh = () => {
       </nav>
 
 
-<div className="row row-cols-1 row-cols-md-3 g-4 w-75 m-auto">
-{cards}
-{cards}
-</div> 
+
 
         </div>
     );

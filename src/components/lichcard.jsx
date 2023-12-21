@@ -127,7 +127,7 @@ const LichCard = (props) => {
                 </form>
         
                 </div>
-                <div className="modal-footer otsos">
+                <div className="modal-footer otstup">
                   <div><button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#del"+props.data.id}>Удалить объявление</button></div>
                  <div> <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
                 </div>

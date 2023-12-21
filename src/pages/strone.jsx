@@ -43,7 +43,7 @@ const Strone = (props) => {
 
             <div className="d-flex justify-content-center mt-5">
 <div className="  board border-2 rounded p-3 w-75">
-    <div className="otsos">
+    <div className="otstup">
 <div className="pho" style={{'max-width': "500px", 'max-height': "500px"}} ><img src={'https://pets.сделай.site' + card.photos1} className="w-100" style={{ 'max-height': "500px"}}alt="..." /></div>
 
 <div className="con">

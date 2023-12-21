@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9d36b17d.css",
+    "main.js": "/static/js/main.14efda73.js",
+    "static/media/коргиг.jpg": "/static/media/коргиг.426650ee8031ec0f78f4.jpg",
+    "static/media/moodle.jfif": "/static/media/moodle.217995ae088c5870e583.jfif",
+    "static/media/VK.png": "/static/media/VK.5fb75fcb04f9e947385b.png",
+    "static/media/psina.png": "/static/media/psina.46dc1fdface460601544.png",
+    "static/media/макарр.png": "/static/media/макарр.1abc4c78492acf6922fa.png",
+    "static/media/измена.png": "/static/media/измена.a8b101ffa58d12fd7f64.png",
+    "index.html": "/index.html",
+    "main.9d36b17d.css.map": "/static/css/main.9d36b17d.css.map",
+    "main.14efda73.js.map": "/static/js/main.14efda73.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d36b17d.css",
+    "static/js/main.14efda73.js"
+  ]
+}
